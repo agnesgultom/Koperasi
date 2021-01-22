@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Data Pulsa</title>
+<title>Data Produk</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -20,34 +20,23 @@
     </div>
   </div>
 </nav>
-
   <div class="container">
-  	<h2>Data Produk Pulsa</h2>
-  	<a class="btn btn-success btn-sm" th:href="@{/pulsa/AddPulsa}" role="button " >Tambah Produk Pulsa</a>
-    <br></br>     			
-
+  	<h2>Data Semua Pemesanan</h2>    			
   		<table class="table"  id="viewDataProduk">
 		  <thead>
 		    <tr>
-		      <th scope="col">Jenis Pulsa</th>
+		      <th scope="col">No. </th>
+		      <th scope="col">Tanggal Pemesanan</th>
 		      <th scope="col">Harga</th>
-		      <th scope="col">Stok</th>
-		      <th scope="col">Deskripsi</th>
-		      <th scope="col">Action</th>
+		      <th scope="col">Status</th>
 		    </tr>
 		  </thead>
 		    <tbody>
-			    <tr th:each="i : ${listPulsa}">
-			      <td scope="row" th:text="${i.jenis_pulsa}"></td>
-			      <td th:text="${i.harga_pulsa}"></td>
-			      <td th:text="${i.stock}"></td>
-			      <td th:text="${i.deskripsi}"></td>
-			      
-			      <td>
-          			<a class="btn btn-outline-danger btn-sm" th:href="@{/pulsa/hapus/__${i.id_pulsa}__}" role="button " >Hapus</a>
-          			
-          			<a class="btn btn-outline-info btn-sm" th:href="@{/pulsa/EditPulsa/__${i.id_pulsa}__}" role="button ">Edit</a>
-               	  </td>
+			    <tr th:each="i, iterator  : ${listPemesanan}">
+			      <td th:text="${iterator.index+1}"></td>
+			      <td th:text="${#dates.format(i.tanggal_pemesanan ,'dd/MMM/yyyy HH:mm')}"></td>
+			      <td th:text="${i.jumlah_harga}"></td>
+			      <td th:text="${i.status_bayar}"></td>
 				  </tr>
 			  </tbody>
 		</table>

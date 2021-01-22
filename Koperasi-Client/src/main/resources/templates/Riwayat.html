@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Data Riwayat</title>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  <style>
+   body
+   {
+    margin:0;
+    padding:0;
+    background-color:#f1f1f1;
+   }
+   .box
+   {
+    width:1270px;
+    padding:20px;
+    background-color:#fff;
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin-top:25px;
+   }
+  </style>
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="http://localhost:8082/produk">Produk<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="http://localhost:8082/pulsa">Pulsa</a>
+      <a class="nav-item nav-link" href="http://localhost:8082/Pemesanan">Pemesanan</a>
+      <a class="nav-item nav-link" href="http://localhost:8082/Riwayat">Riwayat</a>
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+  	<h2>Riwayat Pemesanan</h2>
+  	
+  	<div class="row">
+    	<div class="input-daterange">
+      		<div class="col-md-4">
+       			<input type="text" name="start_date" id="start_date" class="form-control" />
+      		</div>
+      		<div class="col-md-4">
+       			<input type="text" name="end_date" id="end_date" class="form-control" />
+      		</div>      
+     	</div>
+     	<div class="col-md-4">
+      		<input type="button" name="search" id="search" value="Search" class="btn btn-info" />
+     	</div>
+    </div>
+  	    			
+  		<table class="table"  id="viewDataProduk">
+		  <thead>
+		    <tr>
+		      <th scope="col">No. </th>
+		      <th scope="col">Tanggal Pemesanan</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Harga</th>
+		      <th></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+			    <tr th:each="i,iterator : ${listRiwayat}">
+			      <td th:text="${iterator.index+1}"></td>
+			      <td th:text="${#dates.format(i.tanggal_pemesanan ,'dd/MMM/yyyy HH:mm')}"></td>
+			      <td th:text="${i.status_bayar}"></td>
+			      <td th:text="${i.jumlah_harga}"></td>
+				</tr>
+				
+				
+
+			</tbody>
+		</table>
+
+  </div>
+</body>
+</html>
+<script type="text/javascript" language="javascript" >
+$(document).ready(function(){
+ 
+ $('.input-daterange').datepicker({
+  todayBtn:'linked',
+  format: "yyyy-mm-dd",
+  autoclose: true
+ });
+
+ </script>
+
+

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.java.model.Pemesanan;
 import com.java.model.Produk;
 import com.java.model.Pulsa;
 
@@ -48,6 +49,8 @@ public class ProdukApi {
 	public void addProduk(Produk produk) {
 		restTemplate.postForObject(url + "/produk/add", produk, Produk.class);
 	}
+	
+	//API Untuk Pulsa
 	public List<Pulsa> getAllPulsa(){
 		List<Pulsa> listPulsa= Arrays.stream(restTemplate.getForObject(url + "pulsa/get", Pulsa[].class)).collect(Collectors.toList());
 		return listPulsa;
@@ -73,5 +76,17 @@ public class ProdukApi {
 	public void addPulsa(Pulsa pulsa) {
 		restTemplate.postForObject(url + "/pulsa/add", pulsa, Pulsa.class);
 	}
+	
+	//API untuk Pemesanan
+	public List<Pemesanan> getAllPemesanan(){
+		List<Pemesanan> listProduk= Arrays.stream(restTemplate.getForObject(url + "pemesanan/get", Pemesanan[].class)).collect(Collectors.toList());
+		return listProduk;
+	}
+	
+	public List<Pemesanan> getAllFPemesanan(){
+		List<Pemesanan> listProduk= Arrays.stream(restTemplate.getForObject(url + "pemesanan/FinishPemesanan", Pemesanan[].class)).collect(Collectors.toList());
+		return listProduk;
+	}
+
 
 }

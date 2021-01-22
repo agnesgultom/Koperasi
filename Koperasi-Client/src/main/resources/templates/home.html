@@ -15,7 +15,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="http://localhost:8082/produk">Produk<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="http://localhost:8082/pulsa">Pulsa</a>
-      <a class="nav-item nav-link" href="http://localhost:8082/Pemesanan">Pemesanan</a>
+      <a class="nav-item nav-link" href="http://localhost:8082/pemesanan">Pemesanan</a>
       <a class="nav-item nav-link" href="http://localhost:8082/Riwayat">Riwayat</a>
     </div>
   </div>
@@ -33,7 +33,7 @@
 		      <th scope="col">Deskripsi</th>
 		      <th scope="col">Stok</th>
 		      <th scope="col">Harga</th>
-		      <th scope="col"> </th>
+		      <th scope="col">Action</th>
 		    </tr>
 		  </thead>
 		  
@@ -47,7 +47,7 @@
 			      
 			      <td>
           			<a class="btn btn-outline-danger btn-sm" th:href="@{/produk/hapus/__${i.id_produk}__}" role="button " >Hapus</a>
-          			<br/>
+          			
           			<a class="btn btn-outline-info btn-sm" th:href="@{/produk/form/__${i.id_produk}__}" role="button ">Edit</a>
                	  </td>
 				  </tr>

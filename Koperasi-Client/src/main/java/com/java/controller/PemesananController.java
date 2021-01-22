@@ -25,9 +25,9 @@ public class PemesananController {
 		return mv;
 	}
 	
-	@GetMapping("/riwayat")
+	@GetMapping("/Riwayat")
 	public ModelAndView getRiwayat() {
-		ModelAndView mv = new ModelAndView("riwayat");
+		ModelAndView mv = new ModelAndView("Riwayat");
 		mv.addObject("listRiwayat", pemesananapi.getAllFPemesanan());
 		
 		System.out.println("get in pemesanan");
